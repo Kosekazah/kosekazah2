@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons/css/boxicons.min.css">
+    <style>
+        body {
+            background: linear-gradient(#F8BBD0, #F7E7CE);
+            font-family: Arial, sans-serif;
+        }
+        .checkout-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .checkout-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .checkout-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .checkout-item-details {
+            flex: 1;
+        }
+        .checkout-item span {
+            display: block;
+        }
+        .total {
+            text-align: right;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        .btn {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            text-align: center;
+            display: block;
+            margin: 20px auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #loading-spinner {
+            display: none; /* Hidden by default */
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form action="https://formsubmit.co/470af4e260a3d9540439aaf3d95249fd" method="POST" id="checkout-form">
+        <input type="hidden" name="_subject" value="New Order Received">
+        <input type="hidden" name="_next" value="https://ayesha145-c.github.io/success3/"> <!-- Redirect URL after submission -->
+        <input type="hidden" name="_captcha" value="false"> <!-- Disable captcha -->
+        <div class="checkout-container">
+            <h1>Checkout</h1>
+            <div id="checkout-items"></div>
+            <div class="total">Total: <span id="checkout-total">0 Rs</span></div>
+
+            <h2>Shipping Information</h2>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input name="first_name" type="text" id="first-name" placeholder="First Name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input name="last_name" type="text" id="last-name" placeholder="Last Name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input name="address" type="text" id="address" placeholder="Street Address" required>
+            </div>
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input name="phone_number" type="tel" id="phone-number" placeholder="Phone Number" required>
+            </div>
+
+            <h2>Payment Information</h2>
+            <div class="form-group">
+                <label for="payment-method">Payment Method</label>
+                <select id="payment-method" name="payment_method">
+                    <option value="credit-card">Credit Card</option>
+                    <option value="cash-on-delivery">Cash on Delivery</option>
+                </select>
+            </div>
+
+            <div id="payment-details" style="display: none;">
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input name="card_number" type="text" id="card-number" placeholder="Card Number">
+                </div>
+                <div class="form-group">
+                    <label for="card-expiry">Expiry Date</label>
+                    <input name="card_expiry" type="text" id="card-expiry" placeholder="MM/YY">
+                </div>
+                <div class="form-group">
+                    <label for="card-cvc">CVC</label>
+                    <input name="card_cvc" type="text" id="card-cvc" placeholder="CVC">
+                </div>
+            </div>
+
+            <button class="btn" type="submit" id="complete-purchase">Complete Purchase</button>
+        </div>
+        <div id="loading-spinner">Loading...</div>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const checkoutItems = document.getElementById('checkout-items');
+            const checkoutTotal = document.getElementById('checkout-total');
+            const paymentMethod = document.getElementById('payment-method');
+            const paymentDetails = document.getElementById('payment-details');
+
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('checkout-item');
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="checkout-item-details">
+                        <span>${item.name}</span>
+                        <span>Price: ${item.price} Rs</span>
+                        <span>Quantity: ${item.quantity}</span>
+                        <span>Total: ${item.price * item.quantity} Rs</span>
+                    </div>
+                `;
+                checkoutItems.appendChild(itemDiv);
+
+                // Add hidden input fields for the product details
+                const hiddenProductName = document.createElement('input');
+                hiddenProductName.type = 'hidden';
+                hiddenProductName.name = `product_${index}_name`; // Hidden input for product name
+                hiddenProductName.value = item.name;
+                document.getElementById('checkout-form').appendChild(hiddenProductName);
+
+                const hiddenProductQty = document.createElement('input');
+                hiddenProductQty.type = 'hidden';
+                hiddenProductQty.name = `product_${index}_qty`; // Hidden input for product quantity
+                hiddenProductQty.value = item.quantity;
+                document.getElementById('checkout-form').appendChild(hiddenProductQty);
+
+                const hiddenProductPrice = document.createElement('input');
+                hiddenProductPrice.type = 'hidden';
+                hiddenProductPrice.name = `product_${index}_price`; // Hidden input for product price
+                hiddenProductPrice.value = item.price;
+                document.getElementById('checkout-form').appendChild(hiddenProductPrice);
+
+                const hiddenProductImage = document.createElement('input');
+                hiddenProductImage.type = 'hidden';
+                hiddenProductImage.name = `product_${index}_image`; // Hidden input for product image
+                hiddenProductImage.value = item.image;
+                document.getElementById('checkout-form').appendChild(hiddenProductImage);
+
+                total += item.price * item.quantity;
+            });
+
+            checkoutTotal.textContent = `${total} Rs`;
+
+            paymentMethod.addEventListener('change', (event) => {
+                if (event.target.value === 'credit-card') {
+                    paymentDetails.style.display = 'block';
+                } else {
+                    paymentDetails.style.display = 'none';
+                }
+            });
+
+            document.querySelector('form').addEventListener('submit', function() {
+                // Show loading spinner
+                document.getElementById('loading-spinner').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

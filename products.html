@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <!-- Fontawesome Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons/css/boxicons.min.css">
+    <link rel="stylesheet" href="css/style0.css">
+    <style>
+        body{
+            background: linear-gradient(#F8BBD0, #F7E7CE);
+        }
+    </style>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+      <img style="width: 70px;" src="قوس قزحLOGO.png" alt="">
+      <input type="checkbox" id="menu-toggler">
+      <label style="top: 100px;" for="menu-toggler" id="hamburger-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M3 18h18v-2H3v2zm0-5h18V11H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+      </label>
+      <ul class="all-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+      </ul>
+      <!-- Cart Icon -->
+      <div id="cart-icon" onclick="toggleCart()">
+          <span id="cart-count">0</span>
+          <i class="bx bx-cart"></i>
+      </div>
+      <div class="cart-modal" id="cart-modal">
+          <div>
+              <h1 style="text-align: center;">Your Cart</h1>
+          </div>
+          <div class="cart-content" id="cart-content">
+              <!-- Cart items will be dynamically added here -->
+          </div>
+          <div class="cart-footer">
+              <span class="total">Total: <span id="cart-total">0 Rs</span></span>
+              <a href="checkout.html">
+              <button class="btn-checkout">Checkout</button>
+            </a>
+            <br>
+              <button class="btn-close" onclick="closeCart()">Close</button>
+          </div>
+      </div>
+  </nav>
+</header>
+<br><br>
+<section>
+  <h1 style="text-align: center;">All Products</h1>
+  <!-- Products -->
+  <div class="product-container">
+    <div class="product" data-id="1" data-name="KMES Waterproof Mascara" data-price="110" data-image="08079c37-9bb2-4016-8a11-27a6c73682d9.jpeg">
+        <img src="08079c37-9bb2-4016-8a11-27a6c73682d9.jpeg" alt="KMES Waterproof Mascara">
+        <h3>KMES Waterproof Mascara</h3>
+        <br>
+        <p>Price: 110 Rs</p>
+        <br>
+        <p>Introducing KMES Waterproof Mascara, your ultimate choice for bold, long-lasting lashes. This mascara offers smudge-proof and waterproof performance, ensuring your lashes stay voluminous and defined all day.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="2" data-name="Lareen Eyeliner" data-price="138" data-image="c41ec81c-b279-4931-85ff-50ee0ed9d400.jpeg">
+        <img src="c41ec81c-b279-4931-85ff-50ee0ed9d400.jpeg" alt="Lareen Eyeliner">
+        <h3>Lareen Eyeliner</h3>
+        <br>
+        <p>Price: 138 Rs</p>
+        <br>
+        <p>Introducing LAREEN Eyeliner, your go-to for precise and long-lasting eye definition. This eyeliner glides on smoothly, delivering intense color with a matte finish.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    
+     <div class="product" data-id="19" data-name="LAREEN love Be Mine Baby Eyeshadow Palette" data-price="900" data-image="c1d60fa3-a965-423c-8684-603e77a4f6e6.jpeg">
+        <img src="c1d60fa3-a965-423c-8684-603e77a4f6e6.jpeg" alt="LAREEN love Be Mine Baby Eyeshadow Palette">
+        <h3>LAREEN love Be Mine Baby Eyeshadow Palette</h3>
+        <br>
+        <p>Price: 900 Rs</p>
+        <br>
+        <p>This palette features a range of velvety matte and shimmering shades that blend effortlessly for seamless application. Perfect for creating both subtle and bold makeup looks.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="21" data-name="Yameiyan ya Eyeshadow Palette" data-price="1500" data-image="WhatsApp Image 2024-07-25 at 7.20.23 AM.jpeg">
+        <img src="yamieyan.jpeg" alt="Yameiyan ya Eyeshadow Palette">
+        <h3>Yameiyan ya Eyeshadow Palette</h3>
+        <br>
+        <p>Price: 1500 Rs</p>
+        <br>
+        <p>With a range of highly pigmented shades from neutral mattes to shimmering metallics, this palette offers endless possibilities. The blendable formula ensures seamless application making it perfect for any occasion.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="22" data-name="One Fresa KissCrown Eyeshadow Palette" data-price="900" data-image="a1a4996f-900e-4d23-875a-8bb0518ae8cc.jpeg">
+        <img src="a1a4996f-900e-4d23-875a-8bb0518ae8cc.jpeg" alt="One Fresa KissCrown Eyeshadow Palette">
+        <h3>One Fresa KissCrown Eyeshadow Palette</h3>
+        <br>
+        <p>Price: 900 Rs</p>
+        <br>
+        <p>This palette features a versatile array of shades ranging from soft neutrals to bold pops of color, allowing you to create endless eye makeup looks. This palette ensures smooth application and long-lasting wear.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="23" data-name="My beautiful Unicorn Eyeshadow Palette" data-price="1500" data-image="okayy.png">
+        <img src="okayy.png" alt="My beautiful Unicorn Eyeshadow Palette">
+        <h3>My beautiful Unicorn Eyeshadow Palette</h3>
+        <br>
+        <p>Price: 1500 Rs</p>
+        <br>
+        <p>With its richly pigmented and blendable formula, it ensures effortless application and long-lasting vibrancy. Elevate your makeup routine with this palette, perfect for expressing your inner unicorn-inspired beauty.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="24" data-name="Dito Persephone Eyeshadow Palette" data-price="7000" data-image="dito.jpeg">
+        <img src="dito.jpeg" alt="Dito Persephone Eyeshadow Palette">
+        <h3>Dito Persephone Eyeshadow Palette</h3>
+        <br>
+        <p>Price: 7000 Rs</p>
+        <br>
+        <p>This palette features a range of richly pigmented shades, from earthy neutrals to vibrant hues, perfect for creating endless eye looks. With a blendable and long-lasting formula, it offers versatility and sophistication for every occasion.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="3" data-name="Blush Brush" data-price="240" data-image="d5f28877-88af-4667-a9d5-265499b75efb.jpeg">
+        <img src="d5f28877-88af-4667-a9d5-265499b75efb.jpeg" alt="Blush Brush">
+        <h3>Blush Brush</h3>
+        <br>
+        <p>Price: 240 Rs</p>
+        <br>
+        <p> This brush features soft, fluffy bristles that evenly distribute blush onto the apples of your cheeks. Perfect for blending seamlessly and building color intensity, it ensures a smooth and flawless application every time.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    
+    <div class="product" data-id="4" data-name="Highlighter Brush" data-price="300" data-image="highlighter.jpeg">
+        <img src="highlighter.jpeg" alt="Highlighter Brush">
+        <h3>Highlighter Brush</h3>
+        <br>
+        <p>Price: 300 Rs</p>
+        <br>
+        <p>Introducing the Highlighter Brush, your essential tool for achieving a luminous glow. This brush is expertly designed with soft, synthetic bristles that delicately sweep highlighter onto the high points of your face.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="9" data-name="LAREEN Marry Me Contour Palette" data-price="700" data-image="d5ab0a87-7f13-49ba-ae87-63206c31ef69.jpeg">
+        <img src="d5ab0a87-7f13-49ba-ae87-63206c31ef69.jpeg" alt="LAREEN Marry Me Contour Palette">
+        <h3>LAREEN Marry Me Contour Palette</h3>
+        <br>
+        <p>Price: 700 Rs</p>
+        <br>
+        <p>Introducing the Lareen Marry Me Contour Powder, a must-have for sculpting and defining your features with elegance. This contour powder blends seamlessly to create natural shadows and highlights, enhancing your facial structure. </p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="14" data-name="LAREEN Foundation shade 12 beige" data-price="1200" data-image="72173f9f-af7b-4b86-a60b-36bfaebd8a89.jpeg">
+        <img src="72173f9f-af7b-4b86-a60b-36bfaebd8a89.jpeg" alt="LAREEN Foundation shade 12 beige">
+        <h3>LAREEN Foundation shade 12 beige</h3>
+        <br>
+        <p>Price: 1200 Rs</p>
+        <br>
+        <p>Discover Lareen Smoothing Fluid Foundation in Shade 12 Beige. This foundation provides a smooth, flawless finish with a lightweight feel. Perfect for achieving a natural look, it blends effortlessly for comfortable, long-lasting wear.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    
+    <div class="product" data-id="15" data-name="Forever 52 HD foundation" data-price="2000" data-image="foverver.jpeg">
+        <img src="foverver.jpeg" alt="Forever 52 HD foundation">
+        <h3>Forever 52 HD foundation</h3>
+        <br>
+        <p>Price: 2000 Rs</p>
+        <br>
+        <p>Discover FOREVER 52 Professional HD Liquid Foundation, your go-to for flawless, high-definition coverage. This foundation delivers a smooth, natural finish that lasts all day, perfect for achieving a professional look.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+   
+    <div class="product" data-id="15" data-name="Loreal Paris True Match Foundation Shade 2R/2C Rose Vanilla" data-price="4000" data-image="e744bfad-6d4d-4677-88c2-8a9a5a198216.jpeg">
+        <img src="e744bfad-6d4d-4677-88c2-8a9a5a198216.jpeg" alt="Loreal Paris True Match Foundation Shade 2R/2C Rose Vanilla">
+        <h3>Loreal Paris True Match Foundation Shade 2R/2C Rose Vanilla</h3>
+        <br>
+        <p>Price: 4000 Rs</p>
+        <br>
+        <p>Discover L’OREAL Paris True Match Liquid Foundation in Shade 2R/2C. This lightweight formula blends seamlessly to match your skin tone, providing natural coverage with a radiant finish. Perfect for achieving a flawless complexion, it offers a comfortable wear that lasts all day.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="16" data-name="Maybelline New York 24H Foundation Shade 110 Porcelain" data-price="3900" data-image="superstay full coverage 110 1-550x550.jpg">
+        <img src="superstay full coverage 110 1-550x550.jpg" alt="Maybelline New York 24H Foundation Shade 110 Porcelain">
+        <h3>Maybelline New York 24H Foundation Shade 110 Porcelain</h3>
+        <br>
+        <p>Price: 3900 Rs</p>
+        <br>
+        <p>This foundation offers full coverage with a lightweight feel, making it suitable for long wear up to 24 hours. It aims to provide a matte finish that resists smudging, fading, and transferring, giving you a fresh, flawless look throughout the day.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="17" data-name="Maybelline Dream Radiant Liquid Foundation Shade 110 Porcelain" data-price="3900" data-image="a242cd61-592d-4af9-93de-b4c7d74cbb00.jpeg">
+        <img src="a242cd61-592d-4af9-93de-b4c7d74cbb00.jpeg" alt="Maybelline Dream Radiant Liquid Foundation Shade 110 Porcelain">
+        <h3>Maybelline Dream Radiant Liquid Foundation Shade 110 Porcelain</h3>
+        <br>
+        <p>Price: 3900 Rs</p>
+        <br>
+        <p>Introducing Maybelline New York Dream Radiant Liquid Foundation in Shade 110 Porcelain Porcelaine. This foundation provides a radiant finish with medium coverage, perfect for a natural and luminous complexion.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="18" data-name="The Ordinary Caffeine Solution 5% + EGCG" data-price="4000" data-image="okayyyy.webp">
+        <img src="okayyyy.webp" alt="The Ordinary Caffeine Solution 5% + EGCG">
+        <h3>The Ordinary Caffeine Solution 5% + EGCG</h3>
+        <br>
+        <p>Price: 4000 Rs</p>
+        <br>
+        <p>Introducing The Ordinary Caffeine Solution 5% + EGCG. This lightweight serum targets puffiness and dark circles around the eyes with a high concentration of caffeine and green tea extracts. Refreshing upon application, it helps brighten the eye area for a more youthful appearance.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="26" data-name="MN Compact Powder" data-price="700" data-image="187a73d2-1298-492a-b9d6-e4dde2a2598a.jpeg">
+        <img src="187a73d2-1298-492a-b9d6-e4dde2a2598a.jpeg" alt="MN Compact Powder">
+        <h3>MN Compact Powder</h3>
+        <br>
+        <p>Price: 700 Rs</p>
+        <br>
+        <p>Introducing MN Sun Protection Compact Powder, your essential companion for sun-kissed protection and a flawless finish. This compact powder provides effective sun protection while offering a smooth, matte look that lasts throughout the day.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="29" data-name="Shifa Arq-e-Gulaab" data-price="300" data-image="okayy.png">
+        <img src="okayy.png" alt="Shifa Arq-e-Gulaab">
+        <h3>Shifa Arq-e-Gulaab</h3>
+        <br>
+        <p>Price: 300 Rs</p>
+        <br>
+        <p>Shifa Arq-e-Gulab is pure rose water renowned for its soothing, hydrating properties. Perfect for refreshing your skin or enhancing beauty routines with its natural, gentle fragrance.</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    <div class="product" data-id="37" data-name="5pc Makeup Brushes" data-price="700" data-image="5pc.jpeg">
+        <img src="5pc.jpeg" alt="5pc Makeup Brushes">
+        <h3>5pc Makeup Brushes</h3>
+        <br>
+        <p>Price: 700 Rs</p>
+        <br>
+        <p>This kit has essential brushes for every step of your routine, including:
+          <br>
+          1. Blush Brush
+          <br>
+          2. Eyeshadow brush
+          <br>
+          3. Eyebrow brush
+          <br>
+          4. lipstick brush
+          <br>
+          5. concealer brush
+      </p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="6" data-name="Nitro Paddle Brush" data-price="780" data-image="nitro.jpeg">
+        <img src="nitro.jpeg" alt="Nitro Paddle Brush">
+        <h3>Nitro Paddle Brush</h3>
+        <br>
+        <p>Price: 780 Rs</p>
+        <br>
+        <p>Introducing the Nitro Hair Brush, your essential tool for smooth and manageable hair. This brush is designed with flexible bristles that gently detangle knots and reduce static, promoting healthier-looking hair.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    
+    <div class="product" data-id="7" data-name="Mooban Hair Brush" data-price="650" data-image="okayy.png">
+        <img src="okayy.png" alt="Mooban Hair Brush">
+        <h3>Mooban Hair Brush</h3>
+        <br>
+        <p>Price: 650 Rs</p>
+        <br>
+        <p>Whether you’re detangling wet hair or smoothing dry hair, the Mooban Hair Brush provides a comfortable and effective styling experience. Elevate your hair care routine with this essential tool for achieving smooth, lustrous locks effortlessly.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    
+    <div class="product" data-id="8" data-name="RMC Hair Brush" data-price="650" data-image="okayy.png">
+        <img src="okayy.png" alt="RMC Hair Brush">
+        <h3>RMC Hair Brush</h3>
+        <br>
+        <p>Price: 650 Rs</p>
+        <br>
+        <p>Elevate your style with every stroke. Crafted for precision and comfort, our brush detangles and smooths, leaving your hair effortlessly sleek and radiant. Experience the perfect blend of luxury and performance with RMC Hair Brush</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="5" data-name="Artificial Nails" data-price="300" data-image="8083edfa-acef-4a15-b33e-ca313cd3a70c.jpeg">
+        <img src="8083edfa-acef-4a15-b33e-ca313cd3a70c.jpeg" alt="Artificial Nails">
+        <h3>Artificial Nails</h3>
+        <br>
+        <p>Price: 300 Rs</p>
+        <br>
+        <p>These artificial nails are crafted from high-quality materials to provide durability and a natural look. Perfect for achieving salon-quality manicures at home, they come in a variety of shapes, lengths, and designs to suit your style.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="10" data-name="Fit Me Peel-off Nail Polish pack of 24" data-price="2800" data-image="e2ff369d-bcce-448c-b5b9-741bd0efc520.jpeg">
+        <img src="e2ff369d-bcce-448c-b5b9-741bd0efc520.jpeg" alt="Fit Me Peel-off Nail Polish pack of 24">
+        <h3>Fit Me Peel-off Nail Polish pack of 24</h3>
+        <br>
+        <p>Price: 2800 Rs</p>
+        <br>
+        <p>The Fit Me Peel-Off Nail Polish pack of 24 offers a versatile collection of vibrant shades that are easy to apply and remove. Perfect for quick, hassle-free manicures, this set ensures a mess-free experience with its peel-off formula.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    
+    <div class="product" data-id="11" data-name="Enjoy Color Matte Nail-Polish Pack of 24" data-price="3200" data-image="okayy.png">
+        <img src="okayy.png" alt="Enjoy Color Matte Nail-Polish Pack of 24">
+        <h3>Enjoy Color Matte Nail-Polish Pack of 24</h3>
+        <br>
+        <p>Price: 3200 Rs</p>
+        <br>
+        <p> This pack features an array of matte nail polishes in various shades, from bold primaries to soft neutrals. Perfect for creating versatile and trendy nail looks, each polish offers a smooth, matte finish that lasts.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="25" data-name="Bamboo Gold Perfume" data-price="2000" data-image="okayy.png">
+        <img src="okayy.png" alt="Bamboo Gold Perfume">
+        <h3>Bamboo Gold Perfume</h3>
+        <br>
+        <p>Price: 2000 Rs</p>
+        <br>
+        <p>Embrace a touch of elegance with every spritz. This captivating fragrance blends the freshness of bamboo with golden notes of warmth and sophistication, creating a scent that's both invigorating and timelessly luxurious.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="28" data-name="DATE Obsession Body Spray" data-price="600" data-image="okayy.png">
+        <img src="okayy.png" alt="DATE Obsession Body Spray">
+        <h3>DATE Obsession Body Spray</h3>
+        <br>
+        <p>Price: 600 Rs</p>
+        <br>
+        <p>Experience DATE Obsession Body Spray, a fragrance that blends sophistication with irresistible allure. This body spray captivates with its lasting freshness and a subtle hint of mystery, making it the ideal choice for every occasion.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="31" data-name="Lomani Amitabh B. Deodorant Spray" data-price="915" data-image="WhatsApp Image 2024-07-23 at 4.41.37 AM.jpeg">
+        <img src="WhatsApp Image 2024-07-23 at 4.41.37 AM.jpeg" alt="Lomani Amitabh B. Deodorant Spray">
+        <h3>Lomani Amitabh B. Deodorant Spray</h3>
+        <br>
+        <p>Price: 915 Rs</p>
+        <br>
+        <p>Introducing Lomani Amitabh B. Deodorant Spray: a sophisticated blend of freshness and charisma. Designed for the modern man, it offers long-lasting protection with a captivating fragrance that exudes confidence.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="32" data-name="Chivalry OUD" data-price="1100" data-image="okayy.png">
+        <img src="okayy.png" alt="Chivalry OUD">
+        <h3>Chivalry OUD</h3>
+        <br>
+        <p>Price: 1100 Rs</p>
+        <br>
+        <p>Experience the timeless elegance of “Chivalry Oud,” a fragrance that embodies sophistication and luxury. This captivating scent opens with the rich and exotic aroma of oud, balanced perfectly with notes of spicy saffron and refreshing bergamot.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="33" data-name="Classic No.1 Paris Perfume" data-price="2790" data-image="nah.jpeg">
+        <img src="nah.jpeg" alt="Classic No.1 Paris Perfume">
+        <h3>Classic No.1 Paris Perfume</h3>
+        <br>
+        <p>Price: 2790 Rs</p>
+        <br>
+        <p>Vaporisateur natural spray with a sparkling floral fragrance that is formulated with bright citrus top notes, youthful floral middle tones and a woody base. “No. 1 Paris” is not just a perfume, but a symbol of grace and refinement, perfect for those who appreciate the finer things in life.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="34" data-name="MAYA Precious Red Women Perfume" data-price="1510" data-image="okayy.png">
+        <img src="okayy.png" alt="MAYA Precious Red Women Perfume">
+        <h3>MAYA Precious Red Women Perfume</h3>
+        <br>
+        <p>Price: 1510 Rs</p>
+        <br>
+        <p>Discover “MAYA Precious Red Women Perfume,” a captivating blend of fruity top notes, floral middle notes, and a warm base of vanilla and musk. Perfect for the confident, sophisticated woman, it leaves a lasting impression of elegance and allure.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="35" data-name="Ahsan Black Magnet Perfume" data-price="2000" data-image="black-magnet.jpg">
+        <img src="black-magnet.jpg" alt="Ahsan Black Magnet Perfume">
+        <h3>Ahsan Black Magnet Perfume</h3>
+        <br>
+        <p>Price: 2000 Rs</p>
+        <br>
+        <p>Discover the allure of Ahsan Black Magnet perfume, a captivating blend of oriental and woody notes that epitomizes masculine charm. Opening with a burst of freshness, this fragrance evolves into a rich, warm base, leaving a lasting impression of sophistication and allure.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="36" data-name="Speed Stick Roll-on Deodorant" data-price="350" data-image="images (1).jpeg">
+        <img src="images (1).jpeg" alt="Speed Stick Roll-on Deodorant">
+        <h3>Speed Stick Roll-on Deodorant</h3>
+        <br>
+        <p>Price: 350 Rs</p>
+        <br>
+        <p>Experience all-day freshness with Speed Stick Roll-On Deodorant. Our fast-drying formula provides reliable odor protection, keeping you confident wherever your day takes you. Perfect for active lifestyles, it offers long-lasting freshness with a clean, refreshing scent.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="12" data-name="F&B feel real Lipstick shade Bright red" data-price="200" data-image="c52889d3-c936-495c-9b51-592630187d96.jpeg">
+        <img src="c52889d3-c936-495c-9b51-592630187d96.jpeg" alt="F&B feel real Lipstick shade Bright red">
+        <h3>F&B feel real Lipstick shade Bright red</h3>
+        <br>
+        <p>Price: 200 Rs</p>
+        <br>
+        <p> 
+          This lipstick delivers intense color with a creamy, moisturizing formula that ensures comfortable wear. It offers long-lasting coverage and a radiant finish.
+        </p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    
+    <div class="product" data-id="13" data-name="F&B feel real Lipstick shade Maroon" data-price="200" data-image="bfff3c4f-ac95-483d-a226-74a732540883.jpeg">
+        <img src="bfff3c4f-ac95-483d-a226-74a732540883.jpeg" alt="F&B feel real Lipstick shade Maroon">
+        <h3>F&B feel real Lipstick shade Maroon</h3>
+        <br>
+        <p>Price: 200 Rs</p>
+        <br>
+        <p>This lipstick offers rich color and a smooth, creamy texture that glides effortlessly. Perfect for adding a touch of elegance and allure to any look.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="20" data-name="Soft Lip Glaze LipGloss" data-price="250" data-image="okayy.png">
+        <img src="okayy.png" alt="Soft Lip Glaze LipGloss">
+        <h3>Soft Lip Glaze LipGloss</h3>
+        <br>
+        <p>Price: 250 Rs</p>
+        <br>
+        <p>Experience the perfect blend of hydration and shine with our Soft Lip Glaze Lip Gloss. This gloss provides a smooth, non-sticky finish while keeping your lips soft and moisturized all day long.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="27" data-name="MMCQ Crown Lipstick" data-price="350" data-image="dcd4926b-6ce6-44d0-8d2f-d3439155e8b7.jpeg">
+        <img src="dcd4926b-6ce6-44d0-8d2f-d3439155e8b7.jpeg" alt="MMCQ Crown Lipstick">
+        <h3>MMCQ Crown Lipstick</h3>
+        <br>
+        <p>Price: 350 Rs</p>
+        <br>
+        <p>Introducing MMCQ Crown Lipstick, a regal choice for luxurious lips. This lipstick combines rich color with a smooth, velvety texture that glides on effortlessly.</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    </div>
+
+</section>
+<br><br>
+<footer>
+  <div>
+      <span>Copyright © 2024 All Rights Reserved</span>
+  </div>
+</footer>
+
+<script>
+   const cart = [];
+const cartContent = document.getElementById('cart-content');
+const cartTotal = document.getElementById('cart-total');
+const cartCount = document.getElementById('cart-count');
+
+function updateCart() {
+    cartContent.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.dataset.id = item.id;
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+            <span>${item.name} - ${item.price} Rs</span>
+            <input type="number" class="cart-item-quantity" value="${item.quantity}" min="1" 
+                   onchange="updateQuantity(${item.id}, this.value)">
+            <span> ${item.price * item.quantity} Rs</span>
+            <i class='bx bxs-trash' onclick="removeFromCart(${item.id})"></i>
+        `;
+        cartContent.appendChild(cartItem);
+        total += item.price * item.quantity;
+    });
+
+    cartTotal.textContent = `${total} Rs`;
+    cartCount.textContent = cart.length;
+}
+
+function addToCart(product) {
+    const existingItem = cart.find(item => item.id === product.id);
+
+    if (existingItem) {
+        existingItem.quantity += product.quantity;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: product.quantity,
+            image: product.image
+        });
+    }
+
+    updateCart();
+}
+
+function removeFromCart(id) {
+    const itemIndex = cart.findIndex(item => item.id === id);
+
+    if (itemIndex > -1) {
+        cart.splice(itemIndex, 1);
+        updateCart();
+    }
+}
+
+function updateQuantity(id, quantity) {
+    const item = cart.find(item => item.id === id);
+
+    if (item) {
+        item.quantity = parseInt(quantity) || 1;
+        updateCart();
+    }
+}
+
+function toggleCart() {
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.style.display = cartModal.style.display === 'block' ? 'none' : 'block';
+}
+
+function closeCart() {
+    document.getElementById('cart-modal').style.display = 'none';
+}
+
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+        const productElement = button.parentElement;
+        const product = {
+            id: parseInt(productElement.dataset.id),
+            name: productElement.dataset.name,
+            price: parseInt(productElement.dataset.price),
+            quantity: 1, // Default quantity is set to 1
+            image: productElement.dataset.image
+        };
+        addToCart(product);
+    });
+});
+document.querySelector('.btn-checkout').addEventListener('click', () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'CHECKOUT.html'; // Redirect to checkout page
+});
+</script>
+</body>
+</html>
